@@ -22,3 +22,23 @@ Use the attached data.json file as seed data for the PostgreSQL database
 3 - Seed data to Database
 4 - For the API, implement queries and resolvers
 5 - Error, Validation, Testing
+
+#### Database
+
+name: bullseyedb
+tables: securities security_prices (1-N)
+
+Securities
+id: primary key
+ticker: string
+name: string
+sector: string
+country: string
+trend: int - numeric
+
+Security Prices
+id: primary key
+securityId: foreign key
+date: date
+close: numeric
+volume: bigint
