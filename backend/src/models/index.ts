@@ -1,5 +1,5 @@
-import { Security } from "./security";
-import { Price } from "./price";
+import  Security  from "./security";
+import  Price from "./price";
 
 const syncModels = async () => {
   try {
@@ -10,9 +10,6 @@ const syncModels = async () => {
     console.error('Error while syncing models', error);
   }
 };
-
-Security.hasMany(Price);
-Price.belongsTo(Security);
 
 syncModels()
   .then(() => console.log('Model syncing complete'))

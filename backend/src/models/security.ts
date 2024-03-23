@@ -1,39 +1,32 @@
-import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../db/db";
+// import { Model, DataTypes } from "sequelize";
+import { Model, Table, Column, PrimaryKey, AutoIncrement, HasMany } from 'sequelize-typescript';
+import Price from './price';
+// import { sequelize } from "../db/db";
 
-class Security extends Model {}
+@Table({ tableName: 'securities', modelName: 'Security', timestamps: false })
+class Security extends Model {
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  id!: number;
 
-Security.init({
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  ticker: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-  securityName: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-  },
-  sector: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-  country: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-  trend: {
-    type: DataTypes.DECIMAL(5, 2),
-    allowNull: false,
-  }
-}, {
-  sequelize,
-  timestamps: false,
-  modelName: 'Security',
-  }
-);
+  @Column
+  ticker!: string;
 
-export { Security };
+  @Column
+  securityName!: string;
+
+  @Column
+  sector!: string;
+
+  @Column
+  country!: string;
+
+  @Column
+  trend!: number;
+
+  @HasMany(() => Price)
+  prices!: Price[];
+}
+
+export default Security;

@@ -1,31 +1,28 @@
-import { Model, DataTypes } from "sequelize";
-import { sequelize } from "../db/db";
+import { Model, Table, Column, PrimaryKey, AutoIncrement, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import Security from './security';
 
-class Price extends Model {}
+@Table({ tableName: 'security_prices', modelName: 'Price', timestamps: false })
+class Price extends Model {
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+  id!: number;
 
-Price.init({
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  date: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
-  },
-  close: {
-    type: DataTypes.DECIMAL(10, 4),
-    allowNull: false,
-  },
-  volume: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-  }
-}, {
-  sequelize,
-  timestamps: false,
-  modelName: 'Price',
-  }
-);
+  @Column
+  date!: Date;
 
-export { Price };
+  @Column
+  close!: number;
+
+  @Column
+  volume!: bigint;
+
+  @ForeignKey(() => Security)
+  @Column
+  securityId!: number;
+
+  @BelongsTo(() => Security)
+  security!: Security;
+}
+
+export default Price;
