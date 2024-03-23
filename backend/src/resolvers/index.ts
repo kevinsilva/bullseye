@@ -1,7 +1,12 @@
-import { Price, Security } from "../models";
+import Price from "../models/price";
+import Security from "../models/security";
 import { priceArgs, securityArgs } from "../utils/types";
+import dateScalar from "../scalars/date";
+import bigIntScalar from "../scalars/bigint";
 
 const resolvers = {
+  Date: dateScalar,
+  BigInt: bigIntScalar,
   Query: {
     securities: async (): Promise<Security[]> => {
       const securities: Security[] = await Security.findAll();

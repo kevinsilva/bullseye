@@ -1,4 +1,7 @@
 const typeDefs = `
+  scalar Date
+  scalar BigInt
+
   type Security {
     id: ID!
     ticker: String!

@@ -1,19 +1,19 @@
 import { Sequelize } from "sequelize-typescript";
-import { DATABASE_URL, DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT } from "../utils/config";
+import { DATABASE_URL } from "../utils/config";
+import Price from "../models/price";
+import Security from "../models/security";
 
-const sequelize = new Sequelize({
-  database: DATABASE_URL,
-  dialect: 'postgres',
-  username: DB_USERNAME,
-  password: DB_PASSWORD,
-  host: DB_HOST,
-  port: Number(DB_PORT),
-  models: [__dirname + '/../models'],
-});
+if (!DATABASE_URL) throw new Error('DATABASE_URL is not defined');
+
+const sequelize = new Sequelize(DATABASE_URL);
+
+sequelize.addModels([Price, Security]);
+
 
 const connectToDatabase = async(): Promise<void> => {
   try {
     await sequelize.authenticate();
+    await sequelize.sync({ alter: true });
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
