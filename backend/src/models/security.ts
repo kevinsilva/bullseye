@@ -1,7 +1,5 @@
-// import { Model, DataTypes } from "sequelize";
 import { Model, Table, Column, PrimaryKey, AutoIncrement, HasMany } from 'sequelize-typescript';
 import Price from './price';
-// import { sequelize } from "../db/db";
 
 @Table({ tableName: 'securities', modelName: 'Security', timestamps: false })
 class Security extends Model {

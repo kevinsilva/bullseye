@@ -1,7 +1,7 @@
 import  Security  from "./security";
 import  Price from "./price";
 
-const syncModels = async () => {
+const syncModels = async (): Promise<void> => {
   try {
     await Security.sync({ alter: true });
     await Price.sync({ alter: true });
