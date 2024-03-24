@@ -2,6 +2,6 @@ export type securityArgs = {
   id: number
 };
 
-export type priceArgs = {
+export type dailyTimeSeriesArgs = {
   securityId: number
 };

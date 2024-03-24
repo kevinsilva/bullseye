@@ -5,25 +5,25 @@ const typeDefs = `
   type Security {
     id: ID!
     ticker: String!
-    securityName: String!
+    security: String!
     sector: String!
     country: String!
     trend: Float!
-    prices: [Price]!
+    dailyTimeSeries: [DailyTimeSeries]!
   }
 
-  type Price {
+  type DailyTimeSeries {
     id: ID!
     date: Date!
-    close: Float!
+    closePrice: Float!
     volume: BigInt!
     securityId: ID!
   }
 
   type Query {
-    securities: [Security!]!
-    security(id: ID!): Security
-    prices(securityId: ID!): [Price]!
+    securityList: [Security!]!
+    securityDetail(id: ID!): Security!
+    dailyTimeSeries(securityId: ID!): [DailyTimeSeries]!
   }
 `;
 

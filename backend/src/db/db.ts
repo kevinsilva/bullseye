@@ -1,13 +1,18 @@
 import { Sequelize } from "sequelize-typescript";
-import { DATABASE_URL } from "../utils/config";
-import Price from "../models/price";
+import { DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST } from "../utils/config";
+import DailyTimeSeries from "../models/dailyTimeSeries";
 import Security from "../models/security";
 
-if (!DATABASE_URL) throw new Error('DATABASE_URL is not defined');
+if (!DB_NAME || !DB_USERNAME || !DB_PASSWORD || !DB_HOST) {
+  throw new Error('Database configuration is incomplete');
+}
 
-const sequelize = new Sequelize(DATABASE_URL);
+const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
+  host: DB_HOST,
+  dialect: 'postgres'
+});
 
-sequelize.addModels([Price, Security]);
+sequelize.addModels([DailyTimeSeries, Security]);
 
 
 const connectToDatabase = async(): Promise<void> => {

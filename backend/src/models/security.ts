@@ -1,5 +1,5 @@
 import { Model, Table, Column, PrimaryKey, AutoIncrement, HasMany } from 'sequelize-typescript';
-import Price from './price';
+import DailyTimeSeries from './dailyTimeSeries';
 
 @Table({ tableName: 'securities', modelName: 'Security', timestamps: false })
 class Security extends Model {
@@ -12,7 +12,7 @@ class Security extends Model {
   ticker!: string;
 
   @Column
-  securityName!: string;
+  name!: string;
 
   @Column
   sector!: string;
@@ -23,8 +23,8 @@ class Security extends Model {
   @Column
   trend!: number;
 
-  @HasMany(() => Price)
-  prices!: Price[];
+  @HasMany(() => DailyTimeSeries)
+  dailyTimeSeries!: DailyTimeSeries[];
 }
 
 export default Security;

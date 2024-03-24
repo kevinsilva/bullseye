@@ -1,4 +1,4 @@
-import Price from "../models/price";
+import Price from "../models/dailyTimeSeries";
 import Security from "../models/security";
 
 export const seedDatabase = async (): Promise<void> => {
