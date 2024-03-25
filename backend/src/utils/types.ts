@@ -19,3 +19,20 @@ export type seedDataTypes = {
     volume: string
   }[]
 };
+
+export type SecurityTypes = {
+  id: number
+  ticker: string
+  name: string
+  sector: string
+  country: string
+  trend: number
+};
+
+export type DailyTimeSeriesTypes = {
+  id: number
+  date: Date
+  closePrice: number
+  volume: number
+  securityId: number
+};

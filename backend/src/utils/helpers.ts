@@ -1,41 +1,42 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
-import DailyTimeSeries from "../models/dailyTimeSeries";
-import Security from "../models/security";
+import prisma from '../db/db';
 import { seedDataTypes } from "../utils/types";
 
 export const seedDatabase = async (): Promise<void> => {
   try {
-    // const securityCount = await Security.count();
-    // const dtsCount = await DailyTimeSeries.count();
+    const isSeeded = await isDBSeeded();
 
-    // if (securityCount > 0 || dtsCount > 0) {
-    //   console.log('Database already seeded');
-    //   return;
-    // }
+    if (isSeeded) {
+      console.log('Database already seeded');
+      return;
+    }
 
-    const filePath = path.join(__dirname,'..', 'db', 'data.json');
-    const rawData = fs.readFileSync(filePath, 'utf8');
-    const securityData = JSON.parse(rawData) as seedDataTypes[];
+    const data = await convertJSONFile<seedDataTypes>(path.join(__dirname,'..', 'db', 'data.json'));
 
-    for (const security of securityData) {
-        await Security.create({
-          ticker: security.ticker,
-          name: security.securityName,
-          sector: security.sector,
-          country: security.country,
-          trend: security.trend
+    for (const security of data) {
+        const newSecurity = await prisma.security.create({
+          data: {
+            ticker: security.ticker,
+            name: security.securityName,
+            sector: security.sector,
+            country: security.country,
+            trend: security.trend
+          }
         });
 
         for (const dts of security.prices) {
-          await DailyTimeSeries.create({
-            date: new Date(dts.date),
-            closePrice: parseFloat(dts.close),
-            volume: BigInt(dts.volume),
+          await prisma.dailyTimeSeries.create({
+            data: {
+              date: new Date(dts.date),
+              closePrice: parseFloat(dts.close),
+              volume: BigInt(dts.volume),
+              securityId: newSecurity.id
+            }
           });
         }
     }
+
     console.log('Database seeded');
 
   } catch(error) {
@@ -43,3 +44,20 @@ export const seedDatabase = async (): Promise<void> => {
   }
 };
 
+const isDBSeeded = async (): Promise<boolean> => {
+    const securityCount = await prisma.security.count();
+    const dtsCount = await prisma.dailyTimeSeries.count();
+
+    return securityCount > 0 && dtsCount > 0;
+};
+
+const convertJSONFile = async <T>(filePath: string): Promise<T[]> => {
+  try {
+    const rawData: string = await fs.promises.readFile(filePath, 'utf8');
+    const jsonData: T[] = JSON.parse(rawData) as T[];
+
+    return jsonData;
+  } catch (error) {
+    throw new Error("Error reading JSON file");
+  }
+};

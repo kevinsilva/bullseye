@@ -9,6 +9,8 @@
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts . --fix",
     "start": "node dist/index.js",
+    "seedDB": "prisma db seed",
+    "studioDB": "prisma studio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,18 +18,15 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.10.1",
+    "@prisma/client": "^5.11.0",
     "dotenv": "^16.4.5",
     "graphql": "^16.8.1",
-    "pg": "^8.11.3",
-    "reflect-metadata": "^0.2.1",
-    "sequelize": "^6.37.1",
-    "sequelize-typescript": "^2.1.6"
+    "prisma": "^5.11.0"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/graphql": "^14.5.0",
     "@types/node": "^20.11.30",
-    "@types/sequelize": "^4.28.20",
     "@types/validator": "^13.11.9",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
@@ -35,5 +34,9 @@
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.3"
+  },
+  "prisma": {
+    "schema": "src/db/schema.prisma",
+    "seed": "ts-node src/db/seed.ts"
   }
 }
