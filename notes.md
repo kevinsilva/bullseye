@@ -30,15 +30,33 @@ tables: securities security_prices (1-N)
 
 Securities
 id: primary key
-ticker: string
-name: string
-sector: string
-country: string
-trend: int - numeric
+ticker: string varchar(50)
+name: string varchar(100)
+sector: string varchar(50)
+country: string varchar(50)
+trend: int - numeric(5,2)
 
 Security Prices
 id: primary key
 securityId: foreign key
 date: date
-close: numeric
+close: numeric(10,4)
 volume: bigint
+
+#### GraphQL Schema
+
+**problem:** graphql does not support bigint and date.
+
+Use GraphQLScalarType object with these methods:
+
+- serialize: converts the back-end representation to JSON compatible format.
+- parseValue: converts the JSON to its back-end representation.
+- parseLiteral: converts hard-coded arguments on incoming query from AST to the scalar back-end.
+
+Together, these methods describe how Apollo Server interacts with the scalar in every scenario.
+
+#### SeedDB
+
+- read data in json file.
+- loop through data
+- create entry for each table
