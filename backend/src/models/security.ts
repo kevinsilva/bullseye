@@ -1,7 +1,7 @@
-import { Model, Table, Column, PrimaryKey, AutoIncrement, HasMany } from 'sequelize-typescript';
+import { Model, Table, Column, PrimaryKey, AutoIncrement, HasMany, DataType } from 'sequelize-typescript';
 import DailyTimeSeries from './dailyTimeSeries';
 
-@Table({ tableName: 'securities', modelName: 'Security', timestamps: false })
+@Table({ tableName: 'securities', timestamps: false })
 class Security extends Model {
   @PrimaryKey
   @AutoIncrement
@@ -20,10 +20,10 @@ class Security extends Model {
   @Column
   country!: string;
 
-  @Column
+  @Column(DataType.FLOAT)
   trend!: number;
 
-  @HasMany(() => DailyTimeSeries)
+  @HasMany(() => DailyTimeSeries, { foreignKey: 'securityId' })
   dailyTimeSeries!: DailyTimeSeries[];
 }
 

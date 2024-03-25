@@ -5,7 +5,7 @@ const typeDefs = `
   type Security {
     id: ID!
     ticker: String!
-    security: String!
+    name: String!
     sector: String!
     country: String!
     trend: Float!

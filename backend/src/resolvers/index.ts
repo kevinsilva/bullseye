@@ -9,14 +9,14 @@ const resolvers = {
   BigInt: bigIntScalar,
   Query: {
     securityList: async (): Promise<Security[]> => {
-      const securities: Security[] = await Security.findAll();
+      const securities: Security[] = await Security.findAll({include: [{model: DailyTimeSeries}]});
       return securities;
     },
     securityDetail: async (_:null, args: securityArgs) => {
       const security = await Security.findOne({ where: { id: args.id } });
       return security;
     },
-    DailyTimeSeries: async (_:null, args: dailyTimeSeriesArgs) => {
+    dailyTimeSeries: async (_:null, args: dailyTimeSeriesArgs) => {
       const dailyTimeSeries = await DailyTimeSeries.findAll({ where: { securityId: args.securityId } });
       return dailyTimeSeries;
     }

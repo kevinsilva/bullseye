@@ -1,8 +1,9 @@
-import { Model, Table, Column, PrimaryKey, AutoIncrement, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Model, Table, Column, PrimaryKey, AutoIncrement, ForeignKey, BelongsTo, DataType } from 'sequelize-typescript';
 import Security from './security';
 
-@Table({ tableName: 'security_prices', modelName: 'Price', timestamps: false })
-class Price extends Model {
+
+@Table({ tableName: 'security_daily_time_series', timestamps: false })
+class DailyTimeSeries extends Model {
   @PrimaryKey
   @AutoIncrement
   @Column
@@ -11,13 +12,13 @@ class Price extends Model {
   @Column
   date!: Date;
 
-  @Column
-  close!: number;
+  @Column(DataType.FLOAT)
+  closePrice!: number;
 
   @Column
   volume!: bigint;
 
-  @ForeignKey(() => Security)
+  @ForeignKey(() => Security )
   @Column
   securityId!: number;
 
@@ -25,4 +26,4 @@ class Price extends Model {
   security!: Security;
 }
 
-export default Price;
+export default DailyTimeSeries;
