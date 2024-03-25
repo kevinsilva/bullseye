@@ -1,7 +1,7 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import prisma from '../db/db';
 import { seedDataTypes } from "../utils/types";
+import { DB_FILE_PATH } from './config';
 
 export const seedDatabase = async (): Promise<void> => {
   try {
@@ -12,7 +12,7 @@ export const seedDatabase = async (): Promise<void> => {
       return;
     }
 
-    const data = await convertJSONFile<seedDataTypes>(path.join(__dirname,'..', 'db', 'data.json'));
+    const data = await convertJSONFile<seedDataTypes>(DB_FILE_PATH);
 
     for (const security of data) {
         const newSecurity = await prisma.security.create({
