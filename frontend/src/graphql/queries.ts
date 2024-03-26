@@ -1,11 +1,11 @@
 import { gql } from '@apollo/client'
 
 export const ALL_SECURITIES = gql`
-  query {
-    securitiesList {
+  query SecurityList {
+    securityList {
       id
       name
-      symbol
+      ticker
       sector
       country
       trend
