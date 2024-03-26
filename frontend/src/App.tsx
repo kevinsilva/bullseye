@@ -1,7 +1,10 @@
+import Header from "./components/Header"
+import SecurityList from "./components/SecurityList"
 function App() {
   return (
     <>
-      <p>Hi</p>
+      <Header />
+      <SecurityList />
     </>
   )
 }
