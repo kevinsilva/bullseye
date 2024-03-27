@@ -28,5 +28,9 @@ export type SecurityContextTypes = {
   error?: ApolloError | undefined
 }
 
+export type SecurityListTableTypes = {
+  data: SecurityTypes[]
+  handleClick: (securityTicker: string) => void
+}
 
 export type ChildrenTypes = { children: React.ReactNode }
