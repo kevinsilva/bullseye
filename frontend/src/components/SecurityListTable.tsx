@@ -25,8 +25,8 @@ export default function SecurityListTable({ data, handleClick }: SecurityListTab
             <TableBody>
 
               {data.map((security: SecurityTypes) => (
-                <TableRow key={security.id} onClick={() => handleClick(security.ticker)}>
-                  <TableCell>{security.ticker}</TableCell>
+                <TableRow key={security.id} onClick={() => handleClick(security.ticker)} sx={{ cursor: "pointer", '&:hover': { backgroundColor: '#39464C' } }}>
+                  <TableCell >{security.ticker}</TableCell>
                   <TableCell>{security.name}</TableCell>
                   <TableCell>{security.sector}</TableCell>
                   <TableCell>{security.country}</TableCell>
