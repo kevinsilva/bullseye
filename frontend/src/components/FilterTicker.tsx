@@ -18,6 +18,6 @@ export default function FilterTicker() {
   }
 
   return (
-    <Autocomplete options={securityNames} renderInput={(params) => <TextField {...params} label="Select Security" variant="outlined" />} onChange={handleSelectChange} />
+    <Autocomplete options={securityNames} renderInput={(params) => <TextField {...params} label="Select Security" variant="outlined" />} onChange={handleSelectChange} id="filter-ticker"/>
   )
 }

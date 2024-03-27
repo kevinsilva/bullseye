@@ -1,10 +1,12 @@
 import * as Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import accessibility from "highcharts/modules/accessibility";
 import { DailyTimeSeriesDataTypes } from '../utils/types';
 
 export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
-  const stockData =  data.dailyTimeSeries.map(({ date, closePrice }) => [new Date(date).getTime(), closePrice]);
-  const volumeData =  data.dailyTimeSeries.map(({ date, volume }) => [new Date(date).getTime(), parseFloat(volume)]);
+  accessibility(Highcharts);
+  const stockData =  data.dailyTimeSeries.map(({ date, closePrice }) => [new Date(date).getTime(), closePrice]).sort((a, b) => a[0] - b[0]);
+  const volumeData =  data.dailyTimeSeries.map(({ date, volume }) => [new Date(date).getTime(), parseFloat(volume)]).sort((a, b) => a[0] - b[0]);
 
   const options: Highcharts.Options = {
     title: {
@@ -47,6 +49,9 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
     ],
     credits: {
       enabled: false
+    },
+    accessibility: {
+      description: 'Stock chart with volume over time',
     }
   };
 

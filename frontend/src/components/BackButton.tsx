@@ -4,7 +4,7 @@ export default function BackButton() {
   const navigate = useNavigate();
 
   const handleBackButtonClick = () => {
-    navigate(-1);
+    navigate("/");
   }
   return (
     <Button variant="contained" onClick={handleBackButtonClick}>Back</Button>
