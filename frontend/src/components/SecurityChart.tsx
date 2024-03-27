@@ -5,8 +5,13 @@ import { DailyTimeSeriesDataTypes } from '../utils/types';
 
 export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
   accessibility(Highcharts);
-  const stockData =  data.dailyTimeSeries.map(({ date, closePrice }) => [new Date(date).getTime(), closePrice]).sort((a, b) => a[0] - b[0]);
-  const volumeData =  data.dailyTimeSeries.map(({ date, volume }) => [new Date(date).getTime(), parseFloat(volume)]).sort((a, b) => a[0] - b[0]);
+  const stockData =  data.dailyTimeSeries
+    .map(({ date, closePrice }) => [new Date(date).getTime(), closePrice])
+    .sort((a, b) => a[0] - b[0]);
+
+  const volumeData =  data.dailyTimeSeries
+    .map(({ date, volume }) => [new Date(date).getTime(), parseFloat(volume)])
+    .sort((a, b) => a[0] - b[0]);
 
   const options: Highcharts.Options = {
     title: {

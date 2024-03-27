@@ -2,10 +2,15 @@ import { TableContainer, Table, TableHead, TableRow, TableCell, Typography, Tabl
 import { SecurityTypes } from "../utils/types";
 import { useNavigate } from "react-router-dom";
 import { useSecurityContext } from "../context/securityContext";
+import Spinner from "./Spinner";
+import ErrorNotification from "./ErrorNotification";
 
 export default function SecurityList() {
-  const { securityList } = useSecurityContext();
+  const { securityList, loading, error } = useSecurityContext();
   const navigate = useNavigate();
+
+  if (loading) return <Spinner />
+  if (error) return <ErrorNotification errorMessage={error.message} />
 
   const handleSecurityClick = (securityTicker: string) => {
     navigate(`/securities/${securityTicker.toLowerCase()}`);
