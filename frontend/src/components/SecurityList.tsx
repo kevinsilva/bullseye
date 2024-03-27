@@ -1,10 +1,15 @@
 import { TableContainer, Table, TableHead, TableRow, TableCell, Typography, TableBody } from "@mui/material"
-import { useQuery } from "@apollo/client"
-import { ALL_SECURITIES } from "../graphql/queries"
 import { SecurityTypes } from "../utils/types";
+import { useNavigate } from "react-router-dom";
+import { useSecurityContext } from "../context/securityContext";
 
 export default function SecurityList() {
-  const { data } = useQuery(ALL_SECURITIES);
+  const { securityList } = useSecurityContext();
+  const navigate = useNavigate();
+
+  const handleSecurityClick = (securityTicker: string) => {
+    navigate(`/securities/${securityTicker}`);
+  }
 
   return (
     <>
@@ -22,8 +27,8 @@ export default function SecurityList() {
           </TableHead>
           <TableBody>
 
-            {data && data.securityList.map((security: SecurityTypes) => (
-              <TableRow key={security.id}>
+            {securityList && securityList.map((security: SecurityTypes) => (
+              <TableRow key={security.id} onClick={() => handleSecurityClick(security.ticker)}>
                 <TableCell>{security.ticker}</TableCell>
                 <TableCell>{security.name}</TableCell>
                 <TableCell>{security.sector}</TableCell>

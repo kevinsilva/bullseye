@@ -13,19 +13,17 @@ export const ALL_SECURITIES = gql`
   }
 `
 
-export const GET_SECURITY = gql`
-  query getSecurityDetail($id: ID!) {
+export const GET_SECURITY_DETAIL = gql`
+  query SecurityDetail($id: ID!) {
     securityDetail(id: $id) {
-      id
       name
-      symbol
+      ticker
       sector
       country
-      trend
       dailyTimeSeries {
         id
         date
-        price
+        closePrice
         volume
       }
     }
@@ -33,11 +31,11 @@ export const GET_SECURITY = gql`
 `
 
 export const GET_DAILY_TIME_SERIES = gql`
-  query getDailyTimeSeries($id: ID!) {
-    dailyTimeSeries(id: $id) {
+  query DailyTimeSeries($securityId: ID!) {
+    dailyTimeSeries(securityId: $securityId) {
       id
       date
-      price
+      closePrice
       volume
     }
   }
