@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom"
 import SecurityChart from "./SecurityChart";
 import useSecurityDetail from "../hooks/useSecurityDetail"
-import BackButton from "./BackButton";
-import FilterTicker from "./FilterTicker";
+import Navigation from "./Navigation";
 import Spinner from "./Spinner";
 import ErrorNotification from "./ErrorNotification";
 import SecurityInfo from "./SecurityInfo";
@@ -16,8 +15,8 @@ export default function SecurityDetail() {
 
   return (
     <div>
-      <BackButton />
-      <FilterTicker />
+
+      <Navigation />
       {securityData && (
         <>
         <SecurityInfo data={securityData} />

@@ -1,5 +1,9 @@
 :root {
-
+  --color-primary: #18FF9D;
+  --color-secondary: #73CFFF;
+  --color-red: #FE3D70;
+  --color-BG: #131C20;
+  --color-BG2: #39464C;
 }
 
 a {
@@ -19,4 +23,15 @@ body {
 
 .slogan {
   color:  #18FF9D
+}
+
+.security-titles {
+  font-size: 12px;
+  color: #39464C;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#filter-ticker {
+  width: 200px;
 }

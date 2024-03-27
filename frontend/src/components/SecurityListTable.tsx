@@ -10,7 +10,7 @@ export default function SecurityListTable({ data, handleClick }: SecurityListTab
   }
   return (
     <Box>
-      <Typography variant="h2" sx={{ fontWeight: "Bold", color: '#FFF', margin: "60px 0", maxWidth: "45%" }}>Aiming <span className="slogan">Bullseye</span> on Your Favorite Stocks.</Typography>
+      <Typography variant="h2" sx={{ fontWeight: "Bold", color: '#FFF', margin: "60px 0", maxWidth: "500px" }}>Aiming <span className="slogan">Bullseye</span> on Your Favorite Stocks.</Typography>
         <TableContainer>
           <Table aria-label="securities list table">
             <TableHead>
