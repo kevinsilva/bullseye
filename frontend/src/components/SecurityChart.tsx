@@ -17,6 +17,9 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
     title: {
         text: ''
     },
+    chart: {
+      backgroundColor: '#131C20',
+    },
     xAxis: {
       type: 'datetime',
       title: {
@@ -24,17 +27,30 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
       },
       labels: {
         format: '{value:%b \'%y}',
+        style: {
+          color: '#DDD',
+        }
       },
     },
     yAxis: [
       {
         title: {
-          text: 'Stock',
+          text: 'Stock'
+        },
+        labels: {
+          style: {
+            color: '#DDD',
+          }
         },
       },
       {
         title: {
           text: 'Volume',
+        },
+        labels: {
+          style: {
+            color: '#DDD',
+          }
         },
         opposite: true,
       },
@@ -44,14 +60,21 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
         type: 'line',
         name: 'Stock',
         data: stockData,
+        color: '#FE3D70'
       },
       {
         type: 'line',
         name: 'Volume',
         data: volumeData,
+        color: '#73CFFF',
         yAxis: 1,
       },
     ],
+    legend: {
+      itemStyle: {
+        color: '#DDD',
+      },
+    },
     credits: {
       enabled: false
     },
