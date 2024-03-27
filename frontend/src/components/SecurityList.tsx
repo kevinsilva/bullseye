@@ -12,6 +12,7 @@ export default function SecurityList() {
   if (error) return <ErrorNotification errorMessage={error.message} />
 
   const handleSecurityClick = (securityTicker: string) => {
+    console.log(securityTicker)
     navigate(`/securities/${securityTicker.toLowerCase()}`);
   }
 
