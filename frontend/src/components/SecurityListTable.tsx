@@ -12,7 +12,7 @@ export default function SecurityListTable({ data, handleClick }: SecurityListTab
   return (
     <Box>
       <Fade in={true} timeout={{ enter: 1000 }}>
-        <Typography variant="h2" sx={{ fontWeight: "Bold", color: '#FFF', margin: "100px 0 120px", maxWidth: "500px" }}>Aiming <Typography variant="h2" component={"span"} sx={{color: "#18FF9D", fontWeight: "Bold"}}>Bullseye</Typography> on Your Favorite Stocks.</Typography>
+        <Typography variant="h2" sx={{ fontWeight: "Bold", color: '#FFF', margin: "100px 0 120px", maxWidth: "500px" }}>Aiming for <Typography variant="h2" component={"span"} sx={{color: "#18FF9D", fontWeight: "Bold"}}>Bullseye</Typography> on Your Favorite Stocks.</Typography>
       </Fade>
       <Fade in={true} timeout={{ enter: 2000 }}>
           <TableContainer>
