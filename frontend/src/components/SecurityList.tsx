@@ -8,7 +8,7 @@ export default function SecurityList() {
   const navigate = useNavigate();
 
   const handleSecurityClick = (securityTicker: string) => {
-    navigate(`/securities/${securityTicker}`);
+    navigate(`/securities/${securityTicker.toLowerCase()}`);
   }
 
   return (
