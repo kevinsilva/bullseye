@@ -1,18 +1,11 @@
 import { Typography } from "@mui/material"
-import {  useParams } from "react-router-dom"
-import { useQuery } from "@apollo/client"
-import { GET_DAILY_TIME_SERIES } from "../graphql/queries"
-import { useSecurityContext } from "../context/securityContext"
+import { useParams } from "react-router-dom"
 import SecurityChart from "./SecurityChart";
+import useSecurityDetail from "../hooks/useSecurityDetail"
+
 export default function SecurityDetail() {
   const { ticker } = useParams();
-  const { securityList } = useSecurityContext();
-
-  const securityData = securityList.find((security: { ticker: string }) => security.ticker === ticker);
-
-  const { data , loading } = useQuery(GET_DAILY_TIME_SERIES, {
-    variables: { securityId: securityData?.id },
-  });
+  const { securityData, data, loading } = useSecurityDetail(ticker);
 
   if(loading) return <>Loading...</>
 
