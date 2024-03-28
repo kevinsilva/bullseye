@@ -43,6 +43,7 @@ The Custom Scalar Resolvers assign custom scalars to include `Date` and `BigInt`
 The Query Resolvers includes three resolver functions for the querys `securityList`, `securityDetail` and `dailyTimeSeries` for retrieving data from database using Prisma.
 
  **Scalars**
+
 Custom scalar types were created for non natively supported types `Date` and `BigInt`. They resort to the GraphQLScalarType object with these associated methods:
 
 - `serialize`: converts the back-end representation to JSON compatible format.
