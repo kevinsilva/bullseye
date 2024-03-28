@@ -60,3 +60,46 @@ Together, these methods describe how Apollo Server interacts with the scalar in 
 - read data in json file.
 - loop through data
 - create entry for each table
+
+## Frontend
+
+Use Material UI (https://material-ui.com/) and Highcharts (https://github.com/highcharts/highcharts-react / https://www.highcharts.com/)
+Create a React.js Single Page Application application with 2 screens:
+- Security List
+  - a list of all securities provided in data.json displayed in a table with clickable rows
+  - path:
+    - /
+    - /securities
+  - Table fields:
+    - symbol/ticker
+    - name
+    - sector
+    - country
+    - trend
+    - Background
+        -100,-20: Red
+        -20, 20: Green
+        20-100: Blue
+
+- Security Detail
+  - a detail of a Security displayed after clicking on a row in the Security List screen
+  - path:
+    - /securities/:symbol
+  - Detail fields
+    - Symbol
+    - Name
+    - Country
+    - Sector
+  - Chart fields
+    - close (price)
+    - volume
+    - date
+
+### Setup
+
+- React
+- TypeScript
+- Apollo Client
+- Material UI
+- Highcharts
+
