@@ -8,11 +8,11 @@
 
 A full-stack web application that provides financial data.
 
-Bullseye is a react-based application that provides data about securities, including details such as a chart field based on close price, volume and date.
+Bullseye is a react-based application that provides users with data about securities, including details such as a chart based on close price, volume and date.
 
 ## Implementation Details
 
-This project is a financial data system with both back-end and front-end components. The back-end handles data storage and retrieval of data while the front-end provides a simple user interface for interaction. The back-end is built on top of a [PostgreSQL](https://www.postgresql.org/) database, using [Apollo Server](https://www.apollographql.com/) and [Prisma](https://www.prisma.io/) for [GraphQL](https://graphql.org/)-based API development and data management. The front-end is built using [React](https://react.dev/), [Material UI](https://mui.com/) and [Highcharts](https://www.highcharts.com/). [TypeScript](https://www.typescriptlang.org/) is used both on back-end and front-end for type safety and robustness of code.
+This project is a financial data system with both back-end and front-end components. The back-end handles data storage and retrieval of data while the front-end provides user-friedly interface for interaction. The back-end is built on top of a [PostgreSQL](https://www.postgresql.org/) database, using [Apollo Server](https://www.apollographql.com/) and [Prisma](https://www.prisma.io/) for [GraphQL](https://graphql.org/)-based API development and data management. The front-end is built using [React](https://react.dev/), [Material UI](https://mui.com/) and [Highcharts](https://www.highcharts.com/). [TypeScript](https://www.typescriptlang.org/) is used both on back-end and front-end for type safety and robustness of code.
 
 ## Back-end
 
@@ -20,7 +20,7 @@ The back-end server exposes GraphQL API endpoint for querying data. Considering 
 
  **Schemas**
 
-Defines the GraphQL schema for the back-end API, including and object type Security**, an object type DailyTimesSeries, and an object type Query for the root queries.
+Defines the GraphQL schema for the back-end API, including and object type Security, an object type DailyTimesSeries, and an object type Query for the root queries.
 
 The type Security represents the security entity with overview data including the `id`, `ticker` (symbol), `name`, `sector`, `country` and `trend`. It also establishes a one-to-many association with an array of DailyTimeSeries.
 
@@ -40,7 +40,7 @@ The Custom Scalar Resolvers assign custom scalars to include `Date` and `BigInt`
 > **! Note**:
 > Date and BigInt are not included out of the box on Apollo Server.
 
-The Query Resolvers includes three resolver functions for the querys `securityList`, `securityDetail` and `dailyTimeSeries` for retrieving data from database using Prisma.
+The Query Resolvers includes three resolver functions for the queries `securityList`, `securityDetail` and `dailyTimeSeries` for retrieving data from database using Prisma.
 
  **Scalars**
 
@@ -57,39 +57,6 @@ Together, these methods describe how Apollo Server interacts with the custom sca
 Defines the database schema using Prisma's syntax and initializes client.
 
 The database is populated with initial data from a JSON file `data.json`. The main function in *db/seed.ts* uses the utility function `seedDatabase` to iterate through each security and prices object and create new instances using the method create from Prisma.
-
-**Database Schema**
-
-```Js
-// db/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model Security {
-  id Int @id @default(autoincrement())
-  ticker String
-  name String
-  sector String
-  country String
-  trend Float
-  dailyTimeSeries DailyTimeSeries[]
-}
-
-model DailyTimeSeries {
-  id Int @id @default(autoincrement())
-  date DateTime
-  closePrice Float
-  volume BigInt
-  security Security @relation(fields: [securityId], references: [id])
-  securityId Int
-}
-```
 
 ## Front-End
 
@@ -119,62 +86,50 @@ It configures and initializes Apollo Client for making GraphQL requests to back-
 
 **Hooks**
 
-Custom hook for fetching detailed information about a security based on its ticker symbol. It leverages context data to get the id of a specific security and fetches daily time series data (prices) to generate the chart.
+The `useSecurityDetail` is a custom hook for fetching detailed information about a security based on its ticker symbol. It leverages context data to get the id of a specific security and fetches daily time series data (prices) to generate the chart.
 
 ## Development
 
-To install clone repository, change into directory on the terminal.
+### 1. Clone the repository:
 
 ```bash
 git clone https://github.com/kevinsilva/bullseye
 cd bullseye
 ```
+### 2. Install dependencies:
 
-### Back-End
-
-Navigate to backend directory and install dependencies.
+#### Back-End
 
 ```bash
 cd backend
 npm install
 ```
 
-#### Configuration
+Ensure that a PostgreSQL database is available and the connection URL, `DATABASE_URL` is set in the `.env` file.
 
-Ensure that a PostgreSQL database is available and the connection URL is set in the `.env` file.
+#### Front-End
 
-#### Running the Server
+```bash
+  cd frontend
+  npm install
+```
 
-To run the server
+### 3. Run the application:
+
+#### Back-End
 
 ```bash
   cd backend
   npm run dev
 ```
 
-To seed the database
+To seed the database:
 
 ```bash
 npm run seedDB
 ```
 
-
-### Front-End
-
-Navigate to frontend directory and install dependencies.
-
-```bash
-cd frontend
-npm install
-```
-
-#### Configuration
-
-Ensure that the backend server is running and accessible at `http://localhost:4000/`.
-
-#### Running the Application
-
-Navigate to frontend directory and start server.
+#### Front-End
 
 ```bash
   cd frontend
