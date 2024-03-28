@@ -8,6 +8,7 @@
     "dev": "ts-node-dev src/index.ts",
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts . --fix",
+    "format": "prettier --write .",
     "start": "node dist/index.js",
     "seedDB": "prisma db seed",
     "studioDB": "prisma studio",

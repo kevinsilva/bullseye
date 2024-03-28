@@ -1,21 +1,21 @@
 import * as Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import accessibility from "highcharts/modules/accessibility";
+import accessibility from 'highcharts/modules/accessibility';
 import { DailyTimeSeriesDataTypes } from '../utils/types';
 
 export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
   accessibility(Highcharts);
-  const stockData =  data.dailyTimeSeries
+  const stockData = data.dailyTimeSeries
     .map(({ date, closePrice }) => [new Date(date).getTime(), closePrice])
     .sort((a, b) => a[0] - b[0]);
 
-  const volumeData =  data.dailyTimeSeries
+  const volumeData = data.dailyTimeSeries
     .map(({ date, volume }) => [new Date(date).getTime(), parseFloat(volume)])
     .sort((a, b) => a[0] - b[0]);
 
   const options: Highcharts.Options = {
     title: {
-        text: ''
+      text: '',
     },
     chart: {
       backgroundColor: '#131C20',
@@ -26,21 +26,21 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
         text: 'Date',
       },
       labels: {
-        format: '{value:%b \'%y}',
+        format: "{value:%b '%y}",
         style: {
           color: '#DDD',
-        }
+        },
       },
     },
     yAxis: [
       {
         title: {
-          text: 'Stock'
+          text: 'Stock',
         },
         labels: {
           style: {
             color: '#DDD',
-          }
+          },
         },
       },
       {
@@ -50,7 +50,7 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
         labels: {
           style: {
             color: '#DDD',
-          }
+          },
         },
         opposite: true,
       },
@@ -60,7 +60,7 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
         type: 'line',
         name: 'Stock',
         data: stockData,
-        color: '#FE3D70'
+        color: '#FE3D70',
       },
       {
         type: 'line',
@@ -76,14 +76,12 @@ export default function SecurityChart({ data }: DailyTimeSeriesDataTypes) {
       },
     },
     credits: {
-      enabled: false
+      enabled: false,
     },
     accessibility: {
       description: 'Stock chart with volume over time',
-    }
+    },
   };
 
-  return (
-    <HighchartsReact highcharts={Highcharts} options={options} />
-  )
+  return <HighchartsReact highcharts={Highcharts} options={options} />;
 }

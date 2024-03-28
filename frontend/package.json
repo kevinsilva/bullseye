@@ -16,6 +16,9 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
+    "@types/material-ui": "^0.21.17",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
     "graphql": "^16.8.1",
     "highcharts": "^11.4.0",
     "highcharts-react-official": "^3.2.1",
@@ -24,8 +27,6 @@
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",

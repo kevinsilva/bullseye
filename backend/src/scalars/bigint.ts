@@ -7,13 +7,17 @@ const bigIntScalar = new GraphQLScalarType({
     // Convert outgoing BigInt to string for JSON
     if (typeof value === 'bigint') return value.toString();
 
-    throw new Error('GraphQL BigInt Scalar serializer expected a `bigint` value');
+    throw new Error(
+      'GraphQL BigInt Scalar serializer expected a `bigint` value'
+    );
   },
   parseValue(value) {
     // Convert incoming string to Bigint
     if (typeof value === 'string') return BigInt(value);
 
-    throw new Error('GraphQL BigInt Scalar parser expected a valid `bigint` string');
+    throw new Error(
+      'GraphQL BigInt Scalar parser expected a valid `bigint` string'
+    );
   },
   parseLiteral(ast) {
     // Convert hard-coded AST string to BigInt

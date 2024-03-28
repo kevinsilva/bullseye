@@ -1,16 +1,15 @@
 :root {
-  --color-primary: #18FF9D;
-  --color-secondary: #73CFFF;
-  --color-red: #FE3D70;
-  --color-BG: #131C20;
-  --color-BG2: #39464C;
+  --color-primary: #18ff9d;
+  --color-secondary: #73cfff;
+  --color-red: #fe3d70;
+  --color-BG: #131c20;
+  --color-BG2: #39464c;
 }
 
 a {
   text-decoration: none;
 }
 
-
 body {
-  background-color: #131C20;
+  background-color: #131c20;
 }

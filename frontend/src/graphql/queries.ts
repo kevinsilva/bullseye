@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
 export const ALL_SECURITIES = gql`
   query SecurityList {
@@ -11,7 +11,7 @@ export const ALL_SECURITIES = gql`
       trend
     }
   }
-`
+`;
 
 export const GET_SECURITY_DETAIL = gql`
   query SecurityDetail($id: ID!) {
@@ -28,7 +28,7 @@ export const GET_SECURITY_DETAIL = gql`
       }
     }
   }
-`
+`;
 
 export const GET_DAILY_TIME_SERIES = gql`
   query DailyTimeSeries($securityId: ID!) {
@@ -39,4 +39,4 @@ export const GET_DAILY_TIME_SERIES = gql`
       volume
     }
   }
-`
+`;
