@@ -177,7 +177,7 @@ Ensure that the backend server is running and accessible at `http://localhost:40
 Navigate to frontend directory and start server.
 
 ```bash
-  cd backend
+  cd frontend
   npm run dev
 ```
 
