@@ -110,8 +110,8 @@ Ensure that a PostgreSQL database is available and the connection URL, `DATABASE
 #### Front-End
 
 ```bash
-  cd frontend
-  npm install
+cd frontend
+npm install
 ```
 
 ### 3. Run the application:
@@ -119,8 +119,8 @@ Ensure that a PostgreSQL database is available and the connection URL, `DATABASE
 #### Back-End
 
 ```bash
-  cd backend
-  npm run dev
+cd backend
+npm run dev
 ```
 
 To seed the database:
@@ -132,8 +132,8 @@ npm run seedDB
 #### Front-End
 
 ```bash
-  cd frontend
-  npm run dev
+cd frontend
+npm run dev
 ```
 
 ## License
