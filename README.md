@@ -20,30 +20,30 @@ The back-end server exposes GraphQL API endpoint for querying data. Considering 
 
  **Schemas**
 
-Defines the GraphQL schema for the back-end API, including and object type **Security**, an object type **DailyTimesSeries**, and an object type **Query** for the root queries.
+Defines the GraphQL schema for the back-end API, including and object type Security**, an object type DailyTimesSeries, and an object type Query for the root queries.
 
-The type **Security** represents the security entity with overview data including the `id`, `ticker` (symbol), `name`, `sector`, `country` and `trend`. It also establishes a one-to-many association with an array of **DailyTimeSeries**.
+The type Security represents the security entity with overview data including the `id`, `ticker` (symbol), `name`, `sector`, `country` and `trend`. It also establishes a one-to-many association with an array of DailyTimeSeries.
 
-The type **DailyTimeSeries** represents the prices for a given security. It has fields `id`, `date`, `closePrice`, `volume` and `securityId` as the foreign key, establishing the association with type **Security**.
+The type DailyTimeSeries represents the prices for a given security. It has fields `id`, `date`, `closePrice`, `volume` and `securityId` as the foreign key, establishing the association with type Security.
 
-The type **Query** includes three queries:
+The type Query includes three queries:
 - `securityList`: fetches a list of all securities.
 - `securityDetail(id)`: fetches all details for a specific security.
 - `dailyTimeSeries(securityId):`: fetches daily time series for a specific security.
 
  **Resolvers**
 
-Contains the resolver functions for handling **GraphQL** queries, including **Custom Scalar Resolvers** and **Query Resolvers**.
+Contains the resolver functions for handling GraphQL queries, including Custom Scalar Resolvers and Query Resolvers.
 
-The **Custom Scalar Resolvers** assign custom scalars to include `Date` and `BigInt` scalar types.
+The Custom Scalar Resolvers assign custom scalars to include `Date` and `BigInt` scalar types.
 
 > **! Note**:
 > Date and BigInt are not included out of the box on Apollo Server.
 
-The **Query Resolvers** includes three resolver functions for the querys `securityList`, `securityDetail` and `dailyTimeSeries` for retrieving data from database using **Prisma**.
+The Query Resolvers includes three resolver functions for the querys `securityList`, `securityDetail` and `dailyTimeSeries` for retrieving data from database using Prisma.
 
  **Scalars**
-Custom scalar types were created for non natively supported types `Date` and `BigInt`. They resort to the **GraphQLScalarType** object with these associated methods:
+Custom scalar types were created for non natively supported types `Date` and `BigInt`. They resort to the GraphQLScalarType object with these associated methods:
 
 - `serialize`: converts the back-end representation to JSON compatible format.
 - `parseValue`: converts the JSON to its back-end representation.
@@ -53,9 +53,9 @@ Together, these methods describe how Apollo Server interacts with the custom sca
 
  **Database**
 
-Defines the database schema using **Prisma**'s syntax and initializes client.
+Defines the database schema using Prisma's syntax and initializes client.
 
-The database is populated with initial data from a JSON file `data.json`. The main function in *db/seed.ts* uses the utility function `seedDatabase` to iterate through each security and prices object and create new instances using the method **create** from **Prisma**.
+The database is populated with initial data from a JSON file `data.json`. The main function in *db/seed.ts* uses the utility function `seedDatabase` to iterate through each security and prices object and create new instances using the method create from Prisma.
 
 **Database Schema**
 
@@ -110,7 +110,7 @@ Provides context for managing data related to all securities. Data is fetched on
 
 **GraphQL**
 
-It configures and initializes **Apollo Client** for making GraphQL requests to back-end server. It also contains the following list of queries used by the frontend components to fetch data:
+It configures and initializes Apollo Client for making GraphQL requests to back-end server. It also contains the following list of queries used by the frontend components to fetch data:
 
 - `ALL_SECURITIES`
 - `GET_SECURITY_DETAIL`
