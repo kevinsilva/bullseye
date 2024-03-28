@@ -143,6 +143,12 @@ npm install
 
 Ensure that a PostgreSQL database is available and the connection URL is set in the `.env` file.
 
+To seed the database
+
+```bash
+npm run seedDB
+```
+
 #### Running the Server
 
 To run the server
