@@ -2,8 +2,6 @@
 <p align="center"><strong ><span style="font-size: 36px;">Bullseye</span></strong></p>
 <div align="center">
 
-<a href="">[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-success?style=flat-square&logo=codesandbox)]()</a>
-
 </div>
 
 # Bullseye
