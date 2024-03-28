@@ -24,10 +24,10 @@ export default function FilterTicker() {
     if (!newValue) return;
     if (reason === 'selectOption') {
       const security = securityList.find(
-        (security) => security.name === newValue
-      );
+      (security) => security.name === newValue
+    );
 
-      navigate(`/securities/${security?.ticker.toLowerCase()}`);
+    navigate(`/securities/${security?.ticker.toLowerCase()}`);
     }
   };
 
