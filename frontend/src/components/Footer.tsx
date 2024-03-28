@@ -23,8 +23,8 @@ export default function Footer() {
             {' '}
             &copy;{new Date().getFullYear()} Kevin Silva.{' '}
           </Typography>
-          Built with React, TypeScript, Material UI, HighCharts, Apollo
-          Server,Prisma and PostgreSQL.
+          Built with React, TypeScript, Material UI, Highcharts, Apollo
+          Server, Prisma and PostgreSQL.
         </Typography>
       </Box>
     </footer>
