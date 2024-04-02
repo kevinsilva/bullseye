@@ -12,7 +12,7 @@ Bullseye is a react-based application that provides users with data about securi
 
 ## Implementation Details
 
-This project is a financial data system with both back-end and front-end components. The back-end handles data storage and retrieval of data while the front-end provides user-friedly interface for interaction. The back-end is built on top of a [PostgreSQL](https://www.postgresql.org/) database, using [Apollo Server](https://www.apollographql.com/) and [Prisma](https://www.prisma.io/) for [GraphQL](https://graphql.org/)-based API development and data management. The front-end is built using [React](https://react.dev/), [Material UI](https://mui.com/) and [Highcharts](https://www.highcharts.com/). [TypeScript](https://www.typescriptlang.org/) is used both on back-end and front-end for type safety and robustness of code.
+This project is a financial data system with both back-end and front-end components. The back-end handles data storage and retrieval of data while the front-end provides user-friendly interface for interaction. The back-end is built on top of a [PostgreSQL](https://www.postgresql.org/) database, using [Apollo Server](https://www.apollographql.com/) and [Prisma](https://www.prisma.io/) for [GraphQL](https://graphql.org/)-based API development and data management. The front-end is built using [React](https://react.dev/), [Material UI](https://mui.com/) and [Highcharts](https://www.highcharts.com/). [TypeScript](https://www.typescriptlang.org/) is used both on back-end and front-end for type safety and robustness of code.
 
 ## Back-end
 
@@ -38,7 +38,7 @@ Contains the resolver functions for handling GraphQL queries, including Custom S
 The Custom Scalar Resolvers assign custom scalars to include `Date` and `BigInt` scalar types.
 
 > **! Note**:
-> Date and BigInt are not included out of the box on Apollo Server.
+> Date and BigInt are not included out of the box on GraphQL.
 
 The Query Resolvers includes three resolver functions for the queries `securityList`, `securityDetail` and `dailyTimeSeries` for retrieving data from database using Prisma.
 
