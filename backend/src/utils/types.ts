@@ -33,6 +33,6 @@ export type DailyTimeSeriesTypes = {
   id: number;
   date: Date;
   closePrice: number;
-  volume: number;
-  securityId: number;
+  volume: bigint;
+  securityId?: number;
 };
